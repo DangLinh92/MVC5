@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BookStoreAdmin.Models;
 
 namespace BookStoreAdmin.Controllers
 {
@@ -10,7 +11,8 @@ namespace BookStoreAdmin.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var lstSach = DataProvider.EntityModel.Saches;
+            return View(lstSach);
         }
 
         public ActionResult About()
@@ -25,6 +27,12 @@ namespace BookStoreAdmin.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Detail(string id)
+        {
+            var sach = DataProvider.EntityModel.Saches.FirstOrDefault(x => ""+x.Id == id);
+            return View(sach);
         }
     }
 }

@@ -1,31 +1,35 @@
-﻿@{
+﻿@model IEnumerable<BookStoreAdmin.Models.Sach>
+@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+@{
+    int i = 0;
+}
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+@foreach (var item in Model)
+{
+    <div class="templatemo_product_box">
+        <h1>@item.TenSach <span>(@item.TacGia)</span></h1>
+        <img src="~/Content/images/@item.AnhDaiDien" alt="image" width="100px" height="150px" />
+        <div class="product_info">
+            <p>@item.MoTa</p>
+            <h3>@item.GiaBan</h3>
+            <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
+            <div class="detail_button">@Html.ActionLink("Detail","Detail","Home",new {id = item.Id},null)</div>
+        </div>
+        <div class="cleaner">&nbsp;</div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+    if (i % 2 == 0)
+    {
+        <div class="cleaner_with_width">&nbsp;</div>
+    }
+    else
+    {
+        <div class="cleaner_with_height">&nbsp;</div>
+    }
+    i++;
+}
+<a href="subpage.html"><img src="~/Content/images/templatemo_ads.jpg" alt="ads" /></a>
