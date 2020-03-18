@@ -11,7 +11,7 @@ namespace BookStoreAdmin.Controllers
     {
         public ActionResult Index()
         {
-            var lstSach = DataProvider.EntityModel.Saches;
+            var lstSach = DataProvider.Entities.Saches;
             return View(lstSach);
         }
 
@@ -31,7 +31,7 @@ namespace BookStoreAdmin.Controllers
 
         public ActionResult Detail(string id)
         {
-            var sach = DataProvider.EntityModel.Saches.FirstOrDefault(x => ""+x.Id == id);
+            var sach = DataProvider.Entities.Saches.FirstOrDefault(x => ""+x.Id == id);
             return View(sach);
         }
     }

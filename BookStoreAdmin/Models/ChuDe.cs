@@ -12,7 +12,7 @@ namespace BookStoreAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ChuDe()
         {
-            Saches = new HashSet<Sach>();
+            Saches = new HashSet<Sache>();
         }
 
         [Key]
@@ -23,6 +23,6 @@ namespace BookStoreAdmin.Models
         public string TenChuDe { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sach> Saches { get; set; }
+        public virtual ICollection<Sache> Saches { get; set; }
     }
 }

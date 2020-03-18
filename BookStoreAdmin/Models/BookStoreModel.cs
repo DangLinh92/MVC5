@@ -14,7 +14,7 @@ namespace BookStoreAdmin.Models
 
         public virtual DbSet<ChuDe> ChuDes { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
-        public virtual DbSet<Sach> Saches { get; set; }
+        public virtual DbSet<Sache> Saches { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,11 +43,11 @@ namespace BookStoreAdmin.Models
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Sach>()
+            modelBuilder.Entity<Sache>()
                 .Property(e => e.AnhDaiDien)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Sach>()
+            modelBuilder.Entity<Sache>()
                 .Property(e => e.ChuDeId)
                 .IsUnicode(false);
         }

@@ -7,8 +7,17 @@ namespace BookStoreAdmin.Models
 {
     public class DataProvider
     {
-        private static readonly BookStoreModel BookStore = null;
 
-        public static BookStoreModel EntityModel => BookStore ?? new BookStoreModel();
+        /// <summary>
+        /// Khai báo 1 đối tượng để kết nối với db cần làm việc qua EF
+        /// </summary>
+        private static BookStoreModel _Entities = null;
+
+        public static BookStoreModel Entities
+        {
+            get => _Entities ?? (_Entities = new BookStoreModel());
+
+            set => _Entities = value;
+        }
     }
 }

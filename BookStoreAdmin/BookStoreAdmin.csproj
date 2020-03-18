@@ -138,12 +138,16 @@
     <Compile Include="Migrations\202003051520488_InitModel.designer.cs">
       <DependentUpon>202003051520488_InitModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003070318294_renameSach.cs" />
+    <Compile Include="Migrations\202003070318294_renameSach.designer.cs">
+      <DependentUpon>202003070318294_renameSach.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BookStoreModel.cs" />
     <Compile Include="Models\ChuDe.cs" />
     <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\NguoiDung.cs" />
-    <Compile Include="Models\Sach.cs" />
+    <Compile Include="Models\Sache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -205,10 +209,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\TrangChu.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\DanhSach\Index.cshtml" />
+    <Content Include="Views\DanhSach\Create.cshtml" />
+    <Content Include="Views\DanhSach\Edit.cshtml" />
+    <Content Include="Views\DanhSach\Details.cshtml" />
+    <Content Include="Views\DanhSach\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DanhSach\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -226,6 +234,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003051520488_InitModel.resx">
       <DependentUpon>202003051520488_InitModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003070318294_renameSach.resx">
+      <DependentUpon>202003070318294_renameSach.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

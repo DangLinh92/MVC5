@@ -6,8 +6,8 @@ namespace BookStoreAdmin.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Sach")]
-    public partial class Sach
+    [Table("Sache")]
+    public partial class Sache
     {
         public int Id { get; set; }
 
