@@ -1,0 +1,151 @@
+﻿@using QuanLyVanBan.Models
+@model QuanLyVanBan.Models.stanfVanBan
+
+@{
+    ViewBag.Title = "Thêm mới văn bản";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    #NoiDung_tbl {
+        width: 100% !important;
+    }
+</style>
+<link rel="stylesheet" href="~/Scripts/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#NgayTao").datepicker({
+            showOn: "button",
+            buttonImage: "/Content/images/calendar.gif",
+            buttonImageOnly: true,
+            buttonText: "Select date"
+        });
+    });
+</script>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Thêm mới văn bản</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        <form action="/VanBan/Create" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            @Html.AntiForgeryToken()
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="Id" class="form-control-label">ID</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="Id" name="Id" placeholder="Text" class="form-control" data-val="true" data-val-required="Bạn cần phải nhập Id">
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Id" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="MaVanBan" class="form-control-label">Mã Văn Bản</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="MaVanBan" name="MaVanBan" placeholder="Text" class="form-control" data-val="true" data-val-required="Bạn cần phải nhập mã văn bản" data-val-maxlength="Bạn đã nhập quá ký tự">
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Id" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="TieuDe" class="form-control-label">Tiêu Đề</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="TieuDe" name="TieuDe" placeholder="Text" class="form-control">
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Id" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="MoTa" class="form-control-label">Mô Tả</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <textarea name="MoTa" id="MoTa" rows="9" placeholder="Mô Tả..." class="form-control"></textarea>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Id" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="NoiDung" class="form-control-label">Nội Dung</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="NgayTao" class="form-control-label">Ngày Tạo</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="NgayTao" name="NgayTao" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="fileUpload" class="form-control-label">Upload File</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.jpg,.png,.jpeg" id="fileUpload" name="fUpload" class="form-control-file" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="LoaiVanBanId" class=" form-control-label">Loại Văn Bản</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select name="LoaiVanBanId" id="LoaiVanBanId" class="form-control">
+                                        <option value="0">Please select</option>
+                                        @foreach (var s in (List<stanfLoaiVanBan>)ViewBag.LoaiVanBan)
+                                        {
+                                            <option value="@s.Id">@s.TenLoaiVanVan</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="DonViId" class=" form-control-label">Đơn vị</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select name="DonViId" id="DonViId" class="form-control">
+                                        <option value="0">Please select</option>
+                                        @foreach (var s in (List<stanfDonVi>)ViewBag.DonVi)
+                                        {
+                                            <option value="@s.Id">@s.TenDonVi</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<QuanLyVanBan.Models.stanfVanBan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- DATA TABLE -->
+                <h3 class="title-5 m-b-35">Danh Sách Văn Bản</h3>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-right">
+                        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "au-btn au-btn-icon au-btn--green au-btn--small" })
+                    </div>
+                </div>
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>Mã Văn Bản</th>
+                                <th>Tiêu Đề</th>
+                                <th>Nội Dung</th>
+                                <th>Tên File</th>
+                                <th>Định Dạng</th>
+                                <th>Loại Văn Bản</th>
+                                <th>Đơn Vị</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var vanban in Model)
+                            {
+                                <tr class="tr-shadow">
+                                    <td>@vanban.MaVanBan</td>
+                                    <td>
+                                       @vanban.TieuDe
+                                    </td>
+                                    <td class="desc">@Html.Raw(vanban.NoiDung)</td>
+                                    <td>@vanban.TenFile</td>
+                                    <td>
+                                       @vanban.DinhDang
+                                    </td>
+                                    <td>@vanban.stanfLoaiVanBan.TenLoaiVanVan</td>
+                                    <td>@vanban.stanfDonVi.TenDonVi</td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            @Html.ActionLink("Edit","Update",new{id= vanban.Id},new{@class=" zmdi zmdi-edit"})
+                                            @Html.ActionLink("Delete","Delete",new{id= vanban.Id},new{@class=" zmdi zmdi-delete"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END DATA TABLE -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

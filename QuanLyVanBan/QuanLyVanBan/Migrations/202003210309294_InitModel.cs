@@ -1,0 +1,16 @@
+﻿namespace QuanLyVanBan.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class InitModel : DbMigration
+    {
+        public override void Up()
+        {
+        }
+        
+        public override void Down()
+        {
+        }
+    }
+}
