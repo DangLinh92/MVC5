@@ -4,6 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using BookStoreAdmin.App_Start;
+using BookStoreAdmin.Dtos;
 using BookStoreAdmin.Models;
 
 namespace BookStoreAdmin.Controllers.Api
@@ -18,13 +21,13 @@ namespace BookStoreAdmin.Controllers.Api
         }
 
         // GET api/DanhSach
-        public IEnumerable<Sache> GetDanhSach()
+        public IEnumerable<SacheDto> GetDanhSach()
         {
-            return context.Saches.ToList();
+            return context.Saches.ToList().Select(MappingConfig.Mapping.Map<Sache,SacheDto>);
         }
 
         // Get api/sach/1
-        public Sache GeDanhSach(int id)
+        public SacheDto GeDanhSach(int id)
         {
             var sach = context.Saches.SingleOrDefault(c => c.Id == id);
             if (sach == null)
@@ -32,26 +35,29 @@ namespace BookStoreAdmin.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            return sach;
+            return MappingConfig.Mapping.Map<Sache,SacheDto>(sach);
         }
 
         // POST /api/sache
         [System.Web.Http.HttpPost]
-        public Sache CreateDanhSach(Sache sache)
+        public IHttpActionResult CreateDanhSach(SacheDto sache)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                //throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
-            context.Saches.Add(sache);
+            var sach = MappingConfig.Mapping.Map<SacheDto, Sache>(sache);
+            context.Saches.Add(sach);
             context.SaveChanges();
-            return sache;
+            return Created(new Uri(Request.RequestUri + "/" + sache.Id),
+                sach); // MappingConfig.Mapping.Map<Sache, SacheDto>(sache);
         }
 
         // PUT /api/sache/1
         [HttpPut]
-        public void UpdateDanhSach(int id, Sache sache)
+        public void UpdateDanhSach(int id, SacheDto sache)
         {
             if (!ModelState.IsValid)
             {
@@ -61,7 +67,7 @@ namespace BookStoreAdmin.Controllers.Api
             var sacheInDB = context.Saches.SingleOrDefault(c => c.Id == id);
             if(sacheInDB == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            sacheInDB.TacGia = sache.TacGia;
+            MappingConfig.Mapping.Map<SacheDto, Sache>(sache, sacheInDB);
             context.SaveChanges();
         }
 

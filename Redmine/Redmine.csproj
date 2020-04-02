@@ -9,17 +9,17 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AAA19279-2559-49AB-8CC8-69BE32FA1E4B}</ProjectGuid>
+    <ProjectGuid>{26A36CFC-3E6F-4CB5-ADA7-E7E3D62C8FF8}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BookStoreAdmin</RootNamespace>
-    <AssemblyName>BookStoreAdmin</AssemblyName>
+    <RootNamespace>Redmine</RootNamespace>
+    <AssemblyName>Redmine</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44348</IISExpressSSLPort>
+    <IISExpressSSLPort>44305</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -46,9 +46,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -59,23 +56,12 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -140,35 +126,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\MappingConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Controllers\Api\DanhSachController.cs" />
-    <Compile Include="Controllers\DanhSachController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Dtos\SacheDto.cs" />
+    <Compile Include="Core\Domain\Activity.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003051520488_InitModel.cs" />
-    <Compile Include="Migrations\202003051520488_InitModel.designer.cs">
-      <DependentUpon>202003051520488_InitModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003070318294_renameSach.cs" />
-    <Compile Include="Migrations\202003070318294_renameSach.designer.cs">
-      <DependentUpon>202003070318294_renameSach.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003201601210_addRequiredValidation.cs" />
-    <Compile Include="Migrations\202003201601210_addRequiredValidation.designer.cs">
-      <DependentUpon>202003201601210_addRequiredValidation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\BookStoreModel.cs" />
-    <Compile Include="Models\ChuDe.cs" />
-    <Compile Include="Models\DataProvider.cs" />
-    <Compile Include="Models\NguoiDung.cs" />
-    <Compile Include="Models\Sache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,34 +139,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\csharp-6-programmer.jpg" />
-    <Content Include="Content\images\csharp-beginner.jpg" />
-    <Content Include="Content\images\csharp-net-core.jpg" />
-    <Content Include="Content\images\design-pattern-csharp.png" />
-    <Content Include="Content\images\kt.jpg" />
-    <Content Include="Content\images\machine-learning-cs.jpg" />
-    <Content Include="Content\images\templatemo_ads.jpg" />
-    <Content Include="Content\images\templatemo_bg.jpg" />
-    <Content Include="Content\images\templatemo_btn_01.jpg" />
-    <Content Include="Content\images\templatemo_btn_02.jpg" />
-    <Content Include="Content\images\templatemo_footer_bg.jpg" />
-    <Content Include="Content\images\templatemo_h1_bg.jpg" />
-    <Content Include="Content\images\templatemo_header_bg.jpg" />
-    <Content Include="Content\images\templatemo_header_bg_blank.jpg" />
-    <Content Include="Content\images\templatemo_image_01.jpg" />
-    <Content Include="Content\images\templatemo_image_02.jpg" />
-    <Content Include="Content\images\templatemo_image_03.jpg" />
-    <Content Include="Content\images\templatemo_image_04.jpg" />
-    <Content Include="Content\images\templatemo_menu_bg.jpg" />
-    <Content Include="Content\templatemo_style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\images\desktop.ini" />
-    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -229,19 +170,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\TrangChu.cshtml" />
-    <Content Include="Views\Home\Detail.cshtml" />
-    <Content Include="Views\DanhSach\Index.cshtml" />
-    <Content Include="Views\DanhSach\Create.cshtml" />
-    <Content Include="Views\DanhSach\Edit.cshtml" />
-    <Content Include="Views\DanhSach\Details.cshtml" />
-    <Content Include="Views\DanhSach\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Core\Repositories\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -255,17 +188,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003051520488_InitModel.resx">
-      <DependentUpon>202003051520488_InitModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003070318294_renameSach.resx">
-      <DependentUpon>202003070318294_renameSach.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003201601210_addRequiredValidation.resx">
-      <DependentUpon>202003201601210_addRequiredValidation.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -283,9 +205,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50510</DevelopmentServerPort>
+          <DevelopmentServerPort>51825</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44348/</IISUrl>
+          <IISUrl>https://localhost:44305/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
