@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityAndSecurity", "IdentityAndSecurity.csproj", "{FFE9425A-D3B8-4383-A0C5-8C3BDD3C61FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFE9425A-D3B8-4383-A0C5-8C3BDD3C61FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE9425A-D3B8-4383-A0C5-8C3BDD3C61FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE9425A-D3B8-4383-A0C5-8C3BDD3C61FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE9425A-D3B8-4383-A0C5-8C3BDD3C61FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7751B633-06CE-49F1-BD3C-DFCE577649D7}
+	EndGlobalSection
+EndGlobal
