@@ -7,12 +7,14 @@ using System.Web;
 
 namespace Redmine.Core.Domain
 {
-    public class Activity
+    public class FlowType
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        [DisplayName("Activity")]
+        [DisplayName("FlowType")]
         public string Name { get; set; }
+
+        public virtual ICollection<IssueUser> IssueUsers { get; set; }
     }
 }

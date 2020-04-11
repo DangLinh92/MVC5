@@ -7,12 +7,18 @@ using System.Web;
 
 namespace Redmine.Core.Domain
 {
-    public class Activity
+    public class StatusIssue
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        [DisplayName("Activity")]
+        [DisplayName("Status")]
         public string Name { get; set; }
+
+        public StatusIssue()
+        {
+            Issue = new HashSet<Issue>();
+        }
+        public virtual ICollection<Issue> Issue { get; set; }
     }
 }
