@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Redmine.Models;
 
 namespace Redmine.Core.Domain
 {
@@ -21,6 +22,13 @@ namespace Redmine.Core.Domain
         public string RoleId { get; set; }
 
         [ForeignKey("RoleId")]
-        public virtual IdentityRole IdentityRole { get; set; }
+        public virtual IdentityRole Role { get; set; }
+
+        [ForeignKey("UserId")]
+
+        public virtual ApplicationUser User { get; set; }
+
+        [ForeignKey("ProjectId")]
+        public virtual Project Project { get; set; }
     }
 }

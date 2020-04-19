@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RedmineHomeController.cs" />
     <Compile Include="Core\Domain\Activity.cs" />
     <Compile Include="Core\Domain\Category.cs" />
     <Compile Include="Core\Domain\DetectedProcess.cs" />
@@ -185,12 +186,17 @@
     <Compile Include="Core\Domain\StatusIssue.cs" />
     <Compile Include="Core\Domain\Tracker.cs" />
     <Compile Include="Core\Domain\UserProject.cs" />
+    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Core\Repositories\IIssueRepository.cs" />
+    <Compile Include="Core\Repositories\IProjectRepository.cs" />
+    <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="Core\Repositories\ITrackerRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004110418253_InitModel.cs" />
-    <Compile Include="Migrations\202004110418253_InitModel.Designer.cs">
-      <DependentUpon>202004110418253_InitModel.cs</DependentUpon>
+    <Compile Include="Migrations\202004181434262_InitModel.cs" />
+    <Compile Include="Migrations\202004181434262_InitModel.Designer.cs">
+      <DependentUpon>202004181434262_InitModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -200,11 +206,124 @@
     <Compile Include="Persistence\EntityConfigurations\IssueUserConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\LogTimeConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\UserProjectConfiguration.cs" />
-    <Compile Include="Persistence\RedmineContext.cs" />
+    <Compile Include="Persistence\Repositories\IssueReponsitory.cs" />
+    <Compile Include="Persistence\Repositories\ProjectRepository.cs" />
+    <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\Repositories\TrackerRepository.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\web\css\atlas.css" />
+    <Content Include="Content\web\css\bars.css" />
+    <Content Include="Content\web\css\bootstrap-markdown.min.css" />
+    <Content Include="Content\web\css\bootstrap.min.css" />
+    <Content Include="Content\web\css\chocolat.css" />
+    <Content Include="Content\web\css\clndr.css" />
+    <Content Include="Content\web\css\fabochart.css" />
+    <Content Include="Content\web\css\font-awesome.css" />
+    <Content Include="Content\web\css\icon-font.min.css" />
+    <Content Include="Content\web\css\jqvmap.css" />
+    <Content Include="Content\web\css\popuo-box.css" />
+    <Content Include="Content\web\css\style.css" />
+    <Content Include="Content\web\css\vroom.css" />
+    <Content Include="Content\web\fonts\digital-7-webfont.svg" />
+    <Content Include="Content\web\fonts\digital-7_italic-webfont.svg" />
+    <Content Include="Content\web\fonts\digital-7_mono-webfont.svg" />
+    <Content Include="Content\web\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\web\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Content\web\images\1.jpg" />
+    <Content Include="Content\web\images\1.png" />
+    <Content Include="Content\web\images\2.png" />
+    <Content Include="Content\web\images\2222.png" />
+    <Content Include="Content\web\images\3.png" />
+    <Content Include="Content\web\images\4.png" />
+    <Content Include="Content\web\images\5.png" />
+    <Content Include="Content\web\images\admin.jpg" />
+    <Content Include="Content\web\images\admin1.jpg" />
+    <Content Include="Content\web\images\admin2.jpg" />
+    <Content Include="Content\web\images\alarm.png" />
+    <Content Include="Content\web\images\business-1031754_640.jpg" />
+    <Content Include="Content\web\images\clockface.png" />
+    <Content Include="Content\web\images\closew.gif" />
+    <Content Include="Content\web\images\cross.png" />
+    <Content Include="Content\web\images\favicon.ico" />
+    <Content Include="Content\web\images\fb.png" />
+    <Content Include="Content\web\images\hourhand.png" />
+    <Content Include="Content\web\images\icons.png" />
+    <Content Include="Content\web\images\in.jpg" />
+    <Content Include="Content\web\images\in1.jpg" />
+    <Content Include="Content\web\images\in10.jpg" />
+    <Content Include="Content\web\images\in11.jpg" />
+    <Content Include="Content\web\images\in2.jpg" />
+    <Content Include="Content\web\images\in3.jpg" />
+    <Content Include="Content\web\images\in4.jpg" />
+    <Content Include="Content\web\images\in5.jpg" />
+    <Content Include="Content\web\images\in6.jpg" />
+    <Content Include="Content\web\images\in7.jpg" />
+    <Content Include="Content\web\images\in8.jpg" />
+    <Content Include="Content\web\images\in9.jpg" />
+    <Content Include="Content\web\images\leftw.gif" />
+    <Content Include="Content\web\images\logo-redmine2.ico" />
+    <Content Include="Content\web\images\logo-redmine2.png" />
+    <Content Include="Content\web\images\minhand.png" />
+    <Content Include="Content\web\images\p1.jpg" />
+    <Content Include="Content\web\images\p2.jpg" />
+    <Content Include="Content\web\images\p3.jpg" />
+    <Content Include="Content\web\images\p4.jpg" />
+    <Content Include="Content\web\images\p5.jpg" />
+    <Content Include="Content\web\images\p6.jpg" />
+    <Content Include="Content\web\images\pic3.jpg" />
+    <Content Include="Content\web\images\rightw.gif" />
+    <Content Include="Content\web\images\right_arrow.png" />
+    <Content Include="Content\web\images\search.png" />
+    <Content Include="Content\web\images\search2.png" />
+    <Content Include="Content\web\images\sechand.png" />
+    <Content Include="Content\web\images\social.png" />
+    <Content Include="Content\web\images\speed.png" />
+    <Content Include="Content\web\images\tick1.png" />
+    <Content Include="Content\web\images\time.png" />
+    <Content Include="Content\web\images\timer.png" />
+    <Content Include="Content\web\images\tw.png" />
+    <Content Include="Content\web\images\watch.png" />
+    <Content Include="Content\web\js\amcharts.js" />
+    <Content Include="Content\web\js\arbor.js" />
+    <Content Include="Content\web\js\atlas.js" />
+    <Content Include="Content\web\js\barChart.jquery.js" />
+    <Content Include="Content\web\js\bootstrap-markdown.js" />
+    <Content Include="Content\web\js\bootstrap.min.js" />
+    <Content Include="Content\web\js\cbpFWTabs.js" />
+    <Content Include="Content\web\js\Chart-pie.js" />
+    <Content Include="Content\web\js\Chart.js" />
+    <Content Include="Content\web\js\clndr.js" />
+    <Content Include="Content\web\js\css3clock.js" />
+    <Content Include="Content\web\js\CSSPlugin.min.js" />
+    <Content Include="Content\web\js\datamaps-all.js" />
+    <Content Include="Content\web\js\dygraph-combined.js" />
+    <Content Include="Content\web\js\fabochart.js" />
+    <Content Include="Content\web\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\web\js\jquery.chocolat.js" />
+    <Content Include="Content\web\js\jquery.nicescroll.js" />
+    <Content Include="Content\web\js\jquery.vmap.js" />
+    <Content Include="Content\web\js\jquery.vmap.sampledata.js" />
+    <Content Include="Content\web\js\jquery.vmap.world.js" />
+    <Content Include="Content\web\js\light.js" />
+    <Content Include="Content\web\js\map.js" />
+    <Content Include="Content\web\js\modernizr.custom.04022.js" />
+    <Content Include="Content\web\js\moment-2.2.1.js" />
+    <Content Include="Content\web\js\protovis-d3.2.js" />
+    <Content Include="Content\web\js\radar.js" />
+    <Content Include="Content\web\js\responsiveslides.min.js" />
+    <Content Include="Content\web\js\scripts.js" />
+    <Content Include="Content\web\js\serial.js" />
+    <Content Include="Content\web\js\site.js" />
+    <Content Include="Content\web\js\skycons.js" />
+    <Content Include="Content\web\js\TweenLite.min.js" />
+    <Content Include="Content\web\js\underscore-min.js" />
+    <Content Include="Content\web\js\vix.js" />
+    <Content Include="Content\web\js\vroom.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -213,8 +332,36 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Redmine-Logo.wine.ico" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\web\fonts\digital-7-webfont.eot" />
+    <Content Include="Content\web\fonts\digital-7-webfont.ttf" />
+    <Content Include="Content\web\fonts\digital-7-webfont.woff" />
+    <Content Include="Content\web\fonts\digital-7_italic-webfont.eot" />
+    <Content Include="Content\web\fonts\digital-7_italic-webfont.ttf" />
+    <Content Include="Content\web\fonts\digital-7_italic-webfont.woff" />
+    <Content Include="Content\web\fonts\digital-7_mono-webfont.eot" />
+    <Content Include="Content\web\fonts\digital-7_mono-webfont.ttf" />
+    <Content Include="Content\web\fonts\digital-7_mono-webfont.woff" />
+    <Content Include="Content\web\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\web\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\web\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\web\fonts\FontAwesome.otf" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\web\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="Content\web\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="Content\web\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="Content\web\maps\africa.json" />
+    <Content Include="Content\web\maps\america.json" />
+    <Content Include="Content\web\maps\asia.json" />
+    <Content Include="Content\web\maps\europe.json" />
+    <Content Include="Content\web\maps\mideast.json" />
+    <Content Include="Content\web\maps\risk.json" />
+    <Content Include="Content\web\maps\usofa.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -260,11 +407,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutRedmine.cshtml" />
+    <Content Include="Views\RedmineHome\Index.cshtml" />
+    <Content Include="Views\Shared\_SidebarMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_RedmineLoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Core\Repositories\" />
-    <Folder Include="Persistence\Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -280,13 +429,16 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004110418253_InitModel.resx">
-      <DependentUpon>202004110418253_InitModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004181434262_InitModel.resx">
+      <DependentUpon>202004181434262_InitModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Redmine-Logo.wine.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

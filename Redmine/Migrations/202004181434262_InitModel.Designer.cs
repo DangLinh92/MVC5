@@ -13,7 +13,7 @@ namespace Redmine.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202004110418253_InitModel"; }
+            get { return "202004181434262_InitModel"; }
         }
         
         string IMigrationMetadata.Source

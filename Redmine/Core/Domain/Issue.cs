@@ -85,8 +85,8 @@ namespace Redmine.Core.Domain
         public virtual Priority Priority { get; set; }
         public virtual DetectedProcess DetectedProcess { get; set; }
         public virtual Issue ParentIssue { get; set; }
-
-        public ICollection<ApplicationUser> Users { get; set; }
+        public ICollection<IssueUser> IssueUser { get; set; }
+        public ICollection<Message> Messages { get; set; }
 
     }
 }

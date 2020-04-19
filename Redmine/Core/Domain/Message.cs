@@ -33,5 +33,8 @@ namespace Redmine.Core.Domain
         public string ParentId { get; set; }
 
         public string IsDeleted { get; set; }
+
+        [ForeignKey("IssueId")]
+        public Issue Issue { get; set; }
     }
 }

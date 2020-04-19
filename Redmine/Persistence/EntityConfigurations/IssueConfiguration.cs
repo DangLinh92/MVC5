@@ -40,16 +40,6 @@ namespace Redmine.Persistence.EntityConfigurations
                 .HasForeignKey(d=>d.DetectedProcessId)
                 .WillCascadeOnDelete(false);
             HasRequired(i => i.ParentIssue);
-
-            HasMany(u => u.Users)
-                .WithMany(i => i.Issues)
-                .Map(ui =>
-                {
-                    ui.MapLeftKey("IssueId");
-                    ui.MapRightKey("UserId");
-                    ui.ToTable("IssueUser");
-                });
-
         }
     }
 }

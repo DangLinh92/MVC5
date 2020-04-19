@@ -22,7 +22,7 @@ namespace Redmine.Core.Domain
 
         public string Comment { get; set; }
 
-        public string ActivityId { get; set; }
+        public int ActivityId { get; set; }
 
         [ForeignKey("ActivityId")]
         public virtual Activity Activity { get; set; }
