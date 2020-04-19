@@ -7,7 +7,7 @@
 
     <a href="#"><img src="~/Content/web/images/logo-redmine2.png" width="76px" height="76px"></a>
     <a href="#"><span class=" name-caret">@User.Identity.GetUserName()</span></a>
-    @*<p>@Roles.GetRolesForUser(User.Identity.GetUserName())</p>*@
+    <p>@Html.Action("GetRoleOfUser","RedmineHome",new{userId=User.Identity.GetUserId()})</p>
     <ul>
         <li><a class="tooltips" href="javascript:document.getElementById('logoutForm').submit()"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
     </ul>
