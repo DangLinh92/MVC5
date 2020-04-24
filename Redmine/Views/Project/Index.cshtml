@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Views/Shared/_RedmineLayoutPage.cshtml";
+}
+
+<button class="btn btn-sm btn-primary" style="float: right;margin: 10px" onclick="location.href = '@Url.Action("Create","Project")'">Create Project</button>
+
+
+<div id="main-widget-container">
+    <div class="row">
+        <div class="col-sm-12 widget-container-col" id="widget-container-col-12">
+            <div class="widget-box" id="widget-box-10">
+                <div class="widget-header widget-header-small">
+                    <h5 class="widget-title smaller">Redmine</h5>
+
+                    <div class="widget-toolbar no-border">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active">
+                                <a data-toggle="tab" href="#project">Projects</a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#issue">Issues</a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#spenttime">Spent time</a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#activity">Activity</a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#info">Calendar</a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#info">News</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main padding-6">
+                        <div class="tab-content">
+                            <div id="project" class="tab-pane in active">
+                                @Html.Action("ListProject","Project")
+                            </div>
+
+                            <div id="issue" class="tab-pane">
+                                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+                            </div>
+
+                            <div id="spenttime" class="tab-pane">
+                                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
+                            </div>
+                            
+                            <div id="activity" class="tab-pane">
+                                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- PAGE CONTENT ENDS -->

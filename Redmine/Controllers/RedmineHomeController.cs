@@ -16,6 +16,7 @@ namespace Redmine.Controllers
         // GET: RedmineHome
         public ActionResult Index()
         {
+            ViewBag.TitleItem = "Home";
             return View();
         }
 
